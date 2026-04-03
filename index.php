@@ -87,3 +87,11 @@ $res ->execute([
 ]);
 echo "modification reussie";
 ?>
+
+<?php
+#Partie 5
+$resultat = $dbPDO->prepare("DELETE FROM eleves WHERE name=:nom" );
+$req = $resultat ->execute([
+	'nom' => "Bernard"
+]);
+?>

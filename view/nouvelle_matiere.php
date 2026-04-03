@@ -1,6 +1,6 @@
 
 <?php
-require_once(__DIR__.'view/../models/pdo.php');
+require_once(__DIR__.'/../models/pdo.php');
 echo "<br>";
 $nom = $_POST['matière'];
 echo $nom;

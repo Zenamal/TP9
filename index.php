@@ -10,6 +10,7 @@ echo "<strong> Eleves </strong>";
 foreach($eleves as $eleve) {
    echo "<br>";
    echo $eleve["nom"]." ".$eleve["prenom"];
+   echo <a href='./views/modif_etudiant.php?id=".$re['Id_eleve']."'>pour modifier cet eleve</a>
 }
 echo "<br>";
 
@@ -68,6 +69,24 @@ echo "<br>";
 
 <?php
 #Partie 4
-$resultat = $dbPDO->prepare("UPDATE eleves SET prenom = "Stuart" WHERE prenom = "Kevin";");
-$resultat ->execute();
+// $resultat = $dbPDO->prepare("UPDATE eleves SET prenom = :nouveauprenom, nom = :nouveaunom WHERE prenom = :ancienprenom;");
+// $resultat ->execute([
+//    'nouveauprenom' = "Stuart",
+//    'nouveaunom' = "Bob",
+//    'ancienprenom' = "Kevin",
+// ]);
 ?>
+<?php
+$nom = htmlspecialchars(trim($_POST['nom']));
+$prenom = htmlspecialchars(trim($_POST['prenom']));
+$id = intval(htmlspecialchars(trim($_POST['id'])));
+$res = $dbPDO->prepare("UPDATE eleves SET nom=:nom,prenom=:prenom WHERE Id_eleve = $id");
+$res ->execute([
+   'nom' => $nom,
+   'prenom' => $prenom,
+]);
+echo "modification reussie";
+?>
+<html>
+    <a href="../index.php">Retour à la page index</a>
+</html>

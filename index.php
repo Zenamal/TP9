@@ -6,7 +6,7 @@ $resultat = $dbPDO->prepare("SELECT * FROM eleves");
 $resultat ->execute();
 $eleves = $resultat->fetchAll();
 echo "<br>";
-echo "Eleves:";
+echo "<strong> Eleves </strong>";
 foreach($eleves as $eleve) {
    echo "<br>";
    echo $eleve["nom"]." ".$eleve["prenom"];
@@ -28,7 +28,7 @@ $resultat = $dbPDO->prepare("SELECT * FROM prof");
 $resultat ->execute();
 $profs = $resultat->fetchAll();
 echo "<br>";
-echo "Profs:";
+echo "Professeurs:";
 foreach($profs as $prof) {
    echo "<br>";
    echo $prof["nom"]." ".$prof["prenom"];
@@ -38,10 +38,36 @@ echo "<br>";
 
 <?php
 #Partie 3
-$resultat = $dbPDO->prepare("INSERT INTO matières(nom,Id_Prof) VALUES (:nom,:Id)" );
-$resultat ->execute([
-	'nom' => "NSI",
-	'Id' => "1",
-]);
+// $resultat = $dbPDO->prepare("INSERT INTO matières(nom,Id_Prof) VALUES (:nom,:Id)" );
+// $resultat ->execute([
+// 	'nom' => "NSI",
+// 	'Id' => "1",
+// ]);
+echo "<br>";
 ?>
 
+<form action="view/nouvelle_matiere.php" method="post">
+   <label for="matière">Créer une nouvelle matière :</label>
+   <br>
+   <input name="matière" id="matière" type="text">
+   <br>
+   <button type="submit">Valider</button>
+</form>
+
+<form action="view/nouvel_eleve.php" method="post">
+   <label for="nom">Nom :</label>
+   <br>
+   <input name="nom" id="nom" type="text">
+   <br>
+   <label for="prenom">Prénom :</label>
+   <br>
+   <input name="prenom" id="prenom" type="text">
+   <br>
+   <button type="submit">Valider</button>
+</form>
+
+<?php
+#Partie 4
+$resultat = $dbPDO->prepare("UPDATE eleves SET prenom = "Stuart" WHERE prenom = "Kevin";");
+$resultat ->execute();
+?>

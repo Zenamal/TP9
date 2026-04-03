@@ -87,6 +87,3 @@ $res ->execute([
 ]);
 echo "modification reussie";
 ?>
-<html>
-    <a href="../index.php">Retour à la page index</a>
-</html>
